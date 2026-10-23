@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#641d3c">
+<title>Engagement Invitation — Siri & Akhil</title>
+<style>
+:root{color-scheme:light;--wine:#641d3c;--wine2:#391126;--gold:#d9b56b;--rose:#d99ab0;--paper:#fffaf4;--ink:#482b35}
+*{box-sizing:border-box}
+html{min-height:100%;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;min-height:100vh;min-height:100dvh;padding:clamp(12px,4vw,24px);display:flex;align-items:center;justify-content:center;font-family:Georgia,"Times New Roman",serif;color:var(--ink);background:linear-gradient(145deg,#fff9f1,#f6e1e7 60%,#e8c7d1)}
+button,a{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.card{width:100%;max-width:440px;margin:auto;padding:clamp(25px,7vw,36px) clamp(16px,5vw,26px);text-align:center;background:var(--paper);border:1px solid var(--gold);border-radius:22px;box-shadow:0 12px 34px #4b1c3020;position:relative;overflow:hidden}
+.card:before{content:"";position:absolute;inset:7px;border:1px solid #ead9bb;border-radius:16px;pointer-events:none}
+.eyebrow{font:700 10px/1.5 Arial,sans-serif;letter-spacing:2.3px;text-transform:uppercase;color:#9a6d55}
+h1{font-size:clamp(28px,8vw,39px);font-weight:400;line-height:1.12;color:var(--wine);margin:12px 0}
+.intro{font-size:16px;line-height:1.55;max-width:320px;margin:0 auto 17px}
+.date{display:inline-block;font-size:18px;line-height:1.4;padding:9px 13px;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);color:var(--wine)}
+.tap-hint{font:13px/1.5 Arial,sans-serif;color:#86666e;margin:19px 0 7px}
+.gift-button{display:block;position:relative;z-index:2;width:150px;height:130px;margin:0 auto;padding:0;border:0;background:transparent;cursor:pointer;touch-action:manipulation}
+.gift-button:focus-visible{outline:3px solid var(--wine);outline-offset:5px;border-radius:12px}
+.gift{position:absolute;inset:0;animation:bob 2.8s ease-in-out infinite}
+.box{position:absolute;left:25px;bottom:8px;width:100px;height:65px;border:2px solid #f3d58e;border-radius:4px 4px 8px 8px;background:linear-gradient(135deg,#c64b70,#812545)}
+.lid{position:absolute;z-index:3;left:19px;top:31px;width:112px;height:22px;border:2px solid #fff0c5;border-radius:5px;background:linear-gradient(135deg,#f0d18a,#c99943);transform-origin:10% 100%;transition:transform .65s ease}
+.ribbon-v{position:absolute;z-index:4;left:66px;bottom:8px;width:18px;height:65px;background:#f6d98e;border-left:1px solid #fff1c5;border-right:1px solid #fff1c5}
+.ribbon-h{position:absolute;z-index:4;left:25px;bottom:31px;width:100px;height:12px;background:#f6d98e}
+.bow{position:absolute;z-index:5;left:58px;top:13px;width:23px;height:20px;border:5px solid #c58e35;border-radius:100% 10% 100% 10%;transform:rotate(25deg)}
+.bow:after{content:"";position:absolute;left:11px;top:-4px;width:23px;height:20px;border:5px solid #c58e35;border-radius:10% 100% 10% 100%;transform:rotate(55deg)}
+.footer{font:12px Arial,sans-serif;color:#9a7e78;margin-top:14px}
+.overlay{position:fixed;z-index:20;inset:0;display:none;align-items:center;justify-content:center;overflow-y:auto;overscroll-behavior:contain;padding:calc(18px + env(safe-area-inset-top)) 16px calc(18px + env(safe-area-inset-bottom));background:radial-gradient(ellipse at top,#58223e,#210d1a 75%);-webkit-overflow-scrolling:touch}
+.overlay.show{display:flex}
+.panel{width:100%;max-width:430px;margin:auto;text-align:center;color:#fff8f0;padding:10px 0}
+.close{position:sticky;top:0;float:right;border:1px solid #ffffff70;background:#ffffff16;color:white;border-radius:50%;width:40px;height:40px;font-size:24px;line-height:1;cursor:pointer}
+.celebrate-title{clear:both;font-size:clamp(25px,7vw,36px);font-weight:400;line-height:1.15;margin:8px 0}
+.tagline{font-size:15px;line-height:1.5;color:#f5dfe7;margin:0}
+.ring-stage{height:150px;max-width:330px;width:100%;margin:8px auto 10px;position:relative;overflow:visible}
+.ring{position:absolute;top:27px;width:90px;height:90px;border-radius:50%;opacity:0;box-shadow:inset 2px 2px 4px #fff7d5,inset -4px -4px 6px #76501d,2px 5px 10px #0007}
+.ring.male{left:calc(50% - 99px);border:12px solid #c99a3d;border-top-color:#fff0a8;border-left-color:#f0d17b;border-right-color:#94651f;border-bottom-color:#b9822d}
+.ring.female{left:calc(50% + 9px);border:12px solid #d58da7;border-top-color:#ffe8f0;border-left-color:#f5cbd9;border-right-color:#99536d;border-bottom-color:#b86d89;box-shadow:inset 2px 2px 4px #fff0f5,inset -3px -3px 5px #7f3654,2px 4px 9px #0008}
+.ring.female:after{content:"◆";position:absolute;top:-23px;left:23px;font:20px Arial,sans-serif;color:#fff;text-shadow:0 0 5px white,0 0 13px #c9edff}
+.overlay.show .ring.male{animation:maleIn 2.8s .3s cubic-bezier(.2,.75,.25,1) forwards}
+.overlay.show .ring.female{animation:femaleIn 2.8s .3s cubic-bezier(.2,.75,.25,1) forwards}
+.heart{position:absolute;top:57px;left:calc(50% - 13px);width:26px;font:26px/30px Arial,sans-serif;color:#ff8caf;text-shadow:0 0 8px white,0 0 17px #ff8caf;opacity:0;z-index:3}
+.overlay.show .heart{animation:heartPop .7s 2.9s forwards}
+.venue{background:var(--paper);color:var(--ink);border:1px solid var(--gold);border-radius:20px;padding:22px 17px;box-shadow:0 12px 30px #0003;opacity:0;transform:translateY(10px);margin-top:5px}
+.overlay.show .venue{animation:showVenue .7s 3.6s forwards}
+.venue h2{font-size:clamp(26px,7vw,32px);font-weight:400;color:var(--wine);margin:8px 0 12px}
+.details{font:14px/1.65 Arial,sans-serif;color:#684d56;overflow-wrap:anywhere;margin:0 0 17px}
+.map{display:inline-flex;justify-content:center;align-items:center;max-width:100%;padding:13px 18px;min-height:46px;border-radius:28px;background:var(--wine);color:#fff;text-decoration:none;font:700 14px Arial,sans-serif}
+.map:focus-visible,.close:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.small{font:11px/1.5 Arial,sans-serif;color:#a88992;margin-top:12px}
+.card.hidden{display:none}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes maleIn{0%{opacity:0;transform:translateX(-55px) rotate(-20deg) scale(.7)}25%{opacity:1}72%{transform:translateX(13px) rotate(8deg) scale(1.02)}100%{opacity:1;transform:translateX(17px) rotate(7deg) scale(1)}}
+@keyframes femaleIn{0%{opacity:0;transform:translateX(55px) rotate(20deg) scale(.7)}25%{opacity:1}72%{transform:translateX(-13px) rotate(-8deg) scale(1.02)}100%{opacity:1;transform:translateX(-17px) rotate(-7deg) scale(1)}}
+@keyframes heartPop{0%{opacity:0;transform:scale(.4)}70%{opacity:1;transform:scale(1.15)}100%{opacity:1;transform:scale(1)}}
+@keyframes showVenue{to{opacity:1;transform:translateY(0)}}
+@media(max-height:650px){.overlay{align-items:flex-start}.ring-stage{height:115px;margin:0 auto}.ring{top:12px}.celebrate-title{font-size:26px}.venue{padding:17px 14px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.ring,.heart,.venue{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<main class="card" id="inviteCard">
+  <div class="eyebrow">You are cordially invited</div>
+  <h1>Engagement Invitation</h1>
+  <p class="intro">With hearts full of happiness, our family invites you to celebrate a very special moment.</p>
+  <div class="date">Friday, 30 October 2026</div>
+  <p class="tap-hint">Tap the gift to open your invitation ✨</p>
+  <button class="gift-button" id="openGift" type="button" aria-label="Open engagement invitation">
+    <span class="gift" aria-hidden="true">
+      <span class="lid"></span><span class="bow"></span><span class="box"></span><span class="ribbon-v"></span><span class="ribbon-h"></span>
+    </span>
+  </button>
+  <div class="footer">With love, from our family</div>
+</main>
+
+<section class="overlay" id="celebration" aria-label="Siri and Akhil engagement details">
+  <div class="panel">
+    <button class="close" id="closeInvite" type="button" aria-label="Close invitation">×</button>
+    <h2 class="celebrate-title">Two hearts. One promise.</h2>
+    <p class="tagline">A beautiful beginning, sealed with a ring. 💍</p>
+    <div class="ring-stage" aria-hidden="true">
+      <div class="ring male"></div><div class="ring female"></div><div class="heart">♥</div>
+    </div>
+    <div class="venue">
+      <div class="eyebrow">Please join us to celebrate</div>
+      <h2>Siri &amp; Akhil</h2>
+      <p class="details"><strong>Engagement Ceremony</strong><br>
+      Friday, 30 October 2026<br>
+      <strong>10:30 AM onwards</strong><br><br>
+      <strong>Venue</strong><br>
+      Shivam Convention Halls, Telangana X Roads, New Gunj, Boyapalle Rural, Mahabubnagar, Telangana 509001</p>
+      <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Shivam+Convention+Halls%2C+Telangana+X+Roads%2C+New+Gunj%2C+Boyapalle+Rural%2C+Mahabubnagar%2C+Telangana+509001" target="_blank" rel="noopener noreferrer">📍 View Venue on Google Maps</a>
+      <div class="small">We look forward to celebrating with you.</div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  var card = document.getElementById('inviteCard');
+  var overlay = document.getElementById('celebration');
+  var openButton = document.getElementById('openGift');
+  var closeButton = document.getElementById('closeInvite');
+
+  function openInvitation() {
+    card.classList.add('hidden');
+    overlay.classList.add('show');
+    overlay.scrollTop = 0;
+    document.body.style.overflow = 'hidden';
+  }
+  function closeInvitation() {
+    overlay.classList.remove('show');
+    card.classList.remove('hidden');
+    document.body.style.overflow = '';
+    openButton.focus();
+  }
+
+  openButton.addEventListener('click', openInvitation);
+  closeButton.addEventListener('click', closeInvitation);
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && overlay.classList.contains('show')) closeInvitation();
+  });
+})();
+</script>
+</body>
+</html>
